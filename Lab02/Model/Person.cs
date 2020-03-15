@@ -1,4 +1,8 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
+using Lab02.Exceptions;
+
 namespace Lab02.Model
 {
     internal class Person
@@ -29,46 +33,77 @@ namespace Lab02.Model
         #endregion
         #region Properties
 
-        public string Name
+        private string Name
         {
             get => _name;
-            set => _name = value;
+            set
+            {
+                if (Regex.IsMatch(value, "^[a-zA-Z]+(([- ][a-zA-Z ])?[a-zA-Z]*)*$"))
+                {
+                    _name = value;
+                }
+                else
+                {
+                    throw new BadNameException("Error: typo in field \"name\" ");
+                }
+            } 
         }
 
-        public string Surname
+        private string Surname
         {
             get => _surname;
-            set => _surname = value;
+            set
+            {
+                if (Regex.IsMatch(value, "^[a-zA-Z]+(([- ][a-zA-Z ])?[a-zA-Z]*)*$"))
+                {
+                    _surname = value;
+                }
+                else
+                {
+                    throw new BadSurnameException("Error: typo in field \"surname\" ");
+                }
+            }
         }
 
-        public DateTime BirthDate
+        private DateTime BirthDate
         {
             get => _birthDate;
             set => _birthDate = value;
         }
 
-        public string Email
+        private string Email
         {
             get => _email;
-            set => _email = value;
+            set
+            {
+                
+                if (new EmailAddressAttribute().IsValid(value))
+                {
+                    _email = value;
+                }
+                else
+                {
+                    throw new InvalidEmailException("Invalid email!!!");
+                }
+            }
         }
 
-        public string SunSign => _sunSign;
+        internal string SunSign => _sunSign;
 
-        public string ChineseSign => _chineseSign;
+        internal string ChineseSign => _chineseSign;
 
-        public bool IsAdult => _isAdult;
+        internal bool IsAdult => _isAdult;
 
-        public bool IsBirthday => _isBirthday;
+        internal bool IsBirthday => _isBirthday;
 
         #endregion
 
         internal Person(string name,string surname,DateTime birthDate, string email)
         {
-            _name = name;
-            _surname = surname;
+            Name = name;
+            Surname = surname;
             _birthDate = birthDate;
-            _email = email;
+            Email = email;
 
             var age = CalculateAge();
             _isAdult = age >= 18;
@@ -120,9 +155,14 @@ namespace Lab02.Model
             {
                 --age;
             }
-            if (age < 0 || age > 135)
+            if (age < 0)
             {
-                throw new ArgumentException("It is impossible to have such age!!!");
+                throw new FutureBirthDateException("Invalid date of birth!!!(You selected future date)");
+            }
+
+            if (age > 135)
+            {
+                throw new TooOldException("Sorry, but your are too old :(((");
             }
             
 

@@ -24,7 +24,7 @@ namespace Lab02.ViewModel
         #endregion
         #region Properties
 
-        public Person Person
+        private Person Person
         {
             get => _person;
             set
@@ -116,6 +116,7 @@ namespace Lab02.ViewModel
 
         internal Lab02ViewModel()
         {
+            BirthDate = DateTime.Today;
             LoaderManager.Instance.Initialize(this);
         }
         private async void Submit(object obj)
@@ -131,7 +132,7 @@ namespace Lab02.ViewModel
                     {
                         MessageBox.Show("З днем народження!!! Щастя, здоровля, зарахів у Бублика!!!");
                     }
-                    AllFields = "Name: " + Name + "\nSurname: " + Surname + "\nEmail:" + Email + "\nBirth date: " +
+                    AllFields = "Name: " + Name + "\nSurname: " + Surname + "\nEmail: " + Email + "\nBirth date: " +
                                 BirthDate.Day + "." + BirthDate.Month + "." + BirthDate.Year + "\nIs adult?: " +
                                 _person.IsAdult + "\nIs birthday?: " + _person.IsBirthday + "\nWestern sign: " +
                                 _person.SunSign + "\nChinese sign: " + _person.ChineseSign;

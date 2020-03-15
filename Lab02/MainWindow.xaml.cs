@@ -1,4 +1,5 @@
-﻿using Lab02.ViewModel;
+﻿using System.Windows.Controls;
+using Lab02.ViewModel;
 
 namespace Lab02
 {

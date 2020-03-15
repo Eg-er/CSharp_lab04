@@ -39,6 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -54,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exceptions\BadNameException.cs" />
+    <Compile Include="Exceptions\BadSurnameException.cs" />
+    <Compile Include="Exceptions\FutureBirthDateException.cs" />
+    <Compile Include="Exceptions\InvalidEmailException.cs" />
+    <Compile Include="Exceptions\TooOldException.cs" />
     <Compile Include="Tools\BaseViewModel.cs" />
     <Compile Include="Tools\ILoaderOwner.cs" />
     <Compile Include="Tools\Managers\LoaderManager.cs" />
