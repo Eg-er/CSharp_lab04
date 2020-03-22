@@ -5,7 +5,8 @@ using Lab02.Exceptions;
 
 namespace Lab02.Model
 {
-    internal class Person
+    [Serializable]
+    public class Person
     {
         #region Zodiacs
         
@@ -21,10 +22,10 @@ namespace Lab02.Model
         #endregion
         
         #region Fields
-        private string _name;
-        private string _surname;
-        private DateTime _birthDate;
-        private string _email;
+        private readonly string _name;
+        private readonly string _surname;
+        private readonly DateTime _birthDate;
+        private readonly string _email;
         private readonly bool _isAdult;
         private readonly string _sunSign;
         private readonly string _chineseSign;
@@ -33,78 +34,50 @@ namespace Lab02.Model
         #endregion
         #region Properties
 
-        private string Name
+        public string Name
         {
             get => _name;
-            set
-            {
-                if (Regex.IsMatch(value, "^[a-zA-Z]+(([- ][a-zA-Z ])?[a-zA-Z]*)*$"))
-                {
-                    _name = value;
-                }
-                else
-                {
-                    throw new BadNameException("Error: typo in field \"name\" ");
-                }
-            } 
+           
         }
 
-        private string Surname
+        public string Surname
         {
             get => _surname;
-            set
-            {
-                if (Regex.IsMatch(value, "^[a-zA-Z]+(([- ][a-zA-Z ])?[a-zA-Z]*)*$"))
-                {
-                    _surname = value;
-                }
-                else
-                {
-                    throw new BadSurnameException("Error: typo in field \"surname\" ");
-                }
-            }
         }
 
-        private DateTime BirthDate
+        public DateTime BirthDate
         {
             get => _birthDate;
-            set => _birthDate = value;
         }
 
-        private string Email
+        public string Email
         {
             get => _email;
-            set
-            {
-                
-                if (new EmailAddressAttribute().IsValid(value))
-                {
-                    _email = value;
-                }
-                else
-                {
-                    throw new InvalidEmailException("Invalid email!!!");
-                }
-            }
         }
 
-        internal string SunSign => _sunSign;
+        public string SunSign => _sunSign;
 
-        internal string ChineseSign => _chineseSign;
+        public string ChineseSign => _chineseSign;
 
-        internal bool IsAdult => _isAdult;
+        public bool IsAdult => _isAdult;
 
-        internal bool IsBirthday => _isBirthday;
+        public bool IsBirthday => _isBirthday;
 
         #endregion
 
         internal Person(string name,string surname,DateTime birthDate, string email)
         {
-            Name = name;
-            Surname = surname;
+            if (Regex.IsMatch(name, "^[a-zA-Z]+(([- ][a-zA-Z ])?[a-zA-Z]*)*$")) _name = name;
+            else throw new BadNameException("Error: typo in field \"name\" ");
+            
+            if (Regex.IsMatch(surname, "^[a-zA-Z]+(([- ][a-zA-Z ])?[a-zA-Z]*)*$")) _surname = surname;
+            else throw new BadSurnameException("Error: typo in field \"surname\" ");
+            
+            if (new EmailAddressAttribute().IsValid(email)) _email = email;
+            else throw new InvalidEmailException("Invalid email!!!");
+            
             _birthDate = birthDate;
-            Email = email;
-
+            
             var age = CalculateAge();
             _isAdult = age >= 18;
             _isBirthday = ((DateTime.Today.Day == BirthDate.Day) && (DateTime.Today.Month == BirthDate.Month));

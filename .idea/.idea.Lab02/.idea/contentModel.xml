@@ -26,6 +26,7 @@
           <e p="Debug" t="Include">
             <e p="App.g.cs" t="Include" />
             <e p="MainWindow.g.cs" t="Include" />
+            <e p="WorkingWithPersonWindow.g.cs" t="Include" />
           </e>
         </e>
         <e p="packages.config" t="Include" />
@@ -36,15 +37,25 @@
         </e>
         <e p="Tools" t="Include">
           <e p="BaseViewModel.cs" t="Include" />
+          <e p="DataStorage" t="Include">
+            <e p="IDataStorage.cs" t="Include" />
+            <e p="SerializedDataStorage.cs" t="Include" />
+          </e>
+          <e p="FileFolderHelper.cs" t="Include" />
           <e p="ILoaderOwner.cs" t="Include" />
           <e p="Managers" t="Include">
             <e p="LoaderManager.cs" t="Include" />
+            <e p="SerializationManager.cs" t="Include" />
+            <e p="StationManager.cs" t="Include" />
           </e>
           <e p="RelayCommand.cs" t="Include" />
         </e>
         <e p="ViewModel" t="Include">
-          <e p="Lab02ViewModel.cs" t="Include" />
+          <e p="PersonsList.cs" t="Include" />
+          <e p="WorkingWithPerson.cs" t="Include" />
         </e>
+        <e p="WorkingWithPersonWindow.xaml" t="Include" />
+        <e p="WorkingWithPersonWindow.xaml.cs" t="Include" />
       </e>
       <e p="Lab02.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

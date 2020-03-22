@@ -1,0 +1,35 @@
+﻿<Window x:Class="Lab02.WorkingWithPersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Lab02"
+        mc:Ignorable="d"
+        Title="WorkingWithPersonWindow" Height="300" Width="250">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Center" Content="Name" />
+        <TextBox Grid.Row="1"  HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Grid.Row="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Content="Surname" />
+        <TextBox Grid.Row="3"  HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" Text="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Grid.Row="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Content="Email" />
+        <TextBox Grid.Row="5"  HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Grid.Row="6" HorizontalAlignment="Center"  VerticalAlignment="Center" Content="Birth date" />
+        <DatePicker Grid.Row="7"  HorizontalAlignment="Stretch" Margin="5" FirstDayOfWeek="Monday" VerticalAlignment="Center" SelectedDate="{Binding BirthDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  />
+        <Button Grid.Row="8" Width="200"  Margin="5"  Content="Submit"  Command="{Binding SubmitCommand, UpdateSourceTrigger=PropertyChanged}"></Button>
+    </Grid>
+</Window>
