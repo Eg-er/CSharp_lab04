@@ -27,14 +27,14 @@
                <MenuItem Header="Sort by adultness" Command="{Binding SortByAdultnessCommand}"></MenuItem>
                <MenuItem Header="Sort by birthday today" Command="{Binding SortByTodayBirthdayCommand}"></MenuItem>
            </MenuItem>
-           <MenuItem Header="Save" Command="{Binding SubmitCommand}"></MenuItem>
+           <MenuItem Header="Save" Command="{Binding SubmitCommand}" Foreground="ForestGreen"></MenuItem>
        </Menu>
        <DataGrid Grid.Row="1" SelectedValue="{Binding SelectedPerson,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Persons, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False"  >
            <DataGrid.Columns>
                <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=OneWay}"></DataGridTextColumn>
                <DataGridTextColumn Header="Surname" Binding="{Binding Surname, Mode=OneWay}"></DataGridTextColumn>
                <DataGridTextColumn Header="Email" Binding="{Binding Email, Mode=OneWay}"></DataGridTextColumn>
-               <DataGridTextColumn Header="Birth date" Binding="{Binding BirthDate, Mode=OneWay, StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
+               <DataGridTextColumn Header="Birth date" Binding="{Binding BirthDate, Mode=OneWay, StringFormat=dd/mm/yyyy}" Foreground="Blue"></DataGridTextColumn>
                <DataGridTextColumn Header="Sun sign" Binding="{Binding SunSign, Mode=OneWay}"></DataGridTextColumn>
                <DataGridTextColumn Header="Chinese zodiac" Binding="{Binding ChineseSign, Mode=OneWay}"></DataGridTextColumn>
                <DataGridTextColumn Header="Is Adult?" Binding="{Binding IsAdult, Mode=OneWay}"></DataGridTextColumn>

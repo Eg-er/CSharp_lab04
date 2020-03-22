@@ -79,11 +79,13 @@ namespace Lab02.ViewModel
                 if (_workingPerson == null)
                 {
                     StationManager.DataStorage.AddPerson(new Person(_name, _surname, _birthDate, _email));
+                    CloseWindow();
                 }
                 else
                 {
                     StationManager.DataStorage.ChangePerson(_workingPerson,
                         new Person(_name, _surname, _birthDate, _email));
+                    CloseWindow();
                 }
             }
             catch (Exception e)
@@ -91,6 +93,8 @@ namespace Lab02.ViewModel
                 MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        public Action CloseWindow { get; set; }
 
         private bool CheckInput()
         {

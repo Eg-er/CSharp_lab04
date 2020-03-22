@@ -55,7 +55,7 @@ namespace Lab02.Tools.DataStorage
             {
                 AddPerson(new Person(RandomNames[r.Next(0,RandomNames.Length-1)],
                     RandomSurnames[r.Next(0,RandomSurnames.Length-1)],
-                    new DateTime(r.Next(1900,2020),r.Next(1,13),r.Next(1,27)),
+                    new DateTime(r.Next(1900,2020),r.Next(1,13),r.Next(1,28)),
                     $"{r.Next(1,1000)}email@gmail.com"));
             }
         }

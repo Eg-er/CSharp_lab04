@@ -11,12 +11,16 @@ namespace Lab02
         {
             WorkingWithPerson w = new WorkingWithPerson();
             DataContext = w;
+            if(w.CloseWindow==null)
+                w.CloseWindow = new Action(this.Close);
             InitializeComponent();
         }
         public WorkingWithPersonWindow(Person  p)
         {
             InitializeComponent();
             WorkingWithPerson w = new WorkingWithPerson(p);
+            if(w.CloseWindow==null)
+                w.CloseWindow = new Action(this.Close);
             DataContext = w;
         }
     }
